@@ -1,19 +1,7 @@
-FROM python:3.11-slim
-
+FROM python:3.12-slim
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /app
-
-# Install uv
-RUN pip install uv
-
-# Copy all files
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
 COPY . .
-
-# Install dependencies
-RUN uv sync
-
-# Expose Cloud Run port
-EXPOSE 8080
-
-# Run the app (Cloud Run uses port 8080)
 CMD ["uv", "run", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
-```
