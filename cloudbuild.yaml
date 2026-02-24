@@ -1,0 +1,16 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/augmented-atom-487000-j1/beginner-ski-chatbot', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/augmented-atom-487000-j1/beginner-ski-chatbot']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'my-app'
+      - '--image=gcr.io/augmented-atom-487000-j1/beginner-ski-chatbot'
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--port=8080'

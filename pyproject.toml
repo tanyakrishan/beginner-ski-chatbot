@@ -1,0 +1,18 @@
+[project]
+name = "beginner-ski-chatbot"
+version = "0.1.0"
+description = "Ski-Instructor for beginner or first time skiers."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.129.0",
+    "google-cloud-aiplatform>=1.137.0",
+    "litellm>=1.81.10",
+    "python-dotenv>=1.2.1",
+    "uvicorn>=0.40.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]

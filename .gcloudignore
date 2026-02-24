@@ -1,0 +1,13 @@
+.git
+.gitignore
+__pycache__/
+*.py[cod]
+.env
+.venv/
+evals/
+tests/
+README.md
+.DS_Store
+*.pyc
+.pytest_cache/
+```
